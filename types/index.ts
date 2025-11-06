@@ -6,4 +6,5 @@
 export * from "./payments"
 export * from "./nav"
 export * from "./job-matching"
+export * from "./ai-scoring"
 

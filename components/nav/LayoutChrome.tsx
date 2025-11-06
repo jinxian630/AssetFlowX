@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { IconRail } from "./IconRail"
 import { ModuleDrawer } from "./ModuleDrawer"
@@ -14,17 +14,11 @@ interface LayoutChromeProps {
 
 export function LayoutChrome({ children }: LayoutChromeProps) {
   const pathname = usePathname()
-  const [mounted, setMounted] = useState(false)
   const [drawerOpen, setDrawerOpen] = usePersistentState("drawer.open", false)
   const [activeModule, setActiveModule] = usePersistentState<ModuleKey | null>(
     "drawer.module",
     null
   )
-
-  // Handle hydration
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   // Determine which module is active based on current route
   const getModuleFromPath = (path: string): ModuleKey | null => {

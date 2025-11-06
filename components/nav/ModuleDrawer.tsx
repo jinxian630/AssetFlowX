@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import {
   Sheet,
   SheetContent,
+  SheetTitle,
 } from "@/components/ui/sheet"
 import { ModuleKey, NAV_TREE } from "@/types/nav"
 import { motion } from "framer-motion"
@@ -62,6 +63,8 @@ export function ModuleDrawer({ module, open, onClose }: ModuleDrawerProps) {
             className="w-[260px] sm:w-[300px] p-0 border-r"
             onEscapeKeyDown={onClose}
           >
+            {/* Accessibility: Required SheetTitle for screen readers */}
+            <SheetTitle className="sr-only">{config.label}</SheetTitle>
             <motion.div
               className="h-full flex flex-col"
               initial={{ x: -24, opacity: 0.9 }}
